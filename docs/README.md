@@ -5,7 +5,8 @@ This directory contains the documentation and tutorial guides for **Lab 2: Data 
 ## Tutorial Modules
 
 1. **[06. SQLite Database Integration](06-db-connection-sqlite.md)**:
-   - Setting up SQLite (`Data/staff.db`) and Entity Framework Core
+   - Creating and seeding the local SQLite database (`Data/staff.db`)
+   - Setting up Entity Framework Core with `Microsoft.EntityFrameworkCore.Sqlite`
    - Creating the `Staff` model and `ApplicationDbContext`
    - Dependency Injection in `Program.cs` and `Pages/Staff/Index.cshtml.cs`
    - Rendering the staff directory table
@@ -25,7 +26,7 @@ This directory contains the documentation and tutorial guides for **Lab 2: Data 
    - Constructing dynamic queries with deferred execution (`IQueryable<Staff>`)
    - Case-insensitive LINQ search filtering
 
-5. **[08b. HTTP Methods & Routing](08b-http-methods-and-routing.md)**:
-   - Deep-dive into HTTP GET query strings, route parameters, multi-segment routes
-   - HTTP POST with form validation and the **Post-Redirect-Get (PRG)** pattern
-   - Flash messages with `[TempData]`
+---
+
+> 💡 **HTTP Methods & Routing Demos:**  
+> For interactive demos covering GET query strings, route parameters vs query strings, and POST with the Post-Redirect-Get (PRG) pattern, see the companion repository: [webdev-razor-http-methods](https://github.com/mustbebuilt/webdev-razor-http-methods).
