@@ -35,5 +35,5 @@ Thumbs.db
 appsettings.Production.json
 appsettings.Local.json
 
-## Ignore docs directory
-docs
+## Documentation (maintained in GitHub Wiki)
+docs/
