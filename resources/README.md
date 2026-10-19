@@ -5,7 +5,7 @@ This directory contains SQL scripts to create and populate the database tables f
 ## Available SQL Scripts
 
 1. **`staff-sqlite.sql`**:
-   - For SQLite local development (used in [06-db-connection-sqlite.md](../docs/06-db-connection-sqlite.md)).
+   - For SQLite local development (used in [01-db-connection-sqlite.md](../docs/01-db-connection-sqlite.md)).
    - Creates the `staff` table with column constraints and seeds 6 realistic employee records.
    - Command to execute:
      ```bash
@@ -13,5 +13,5 @@ This directory contains SQL scripts to create and populate the database tables f
      ```
 
 2. **`staff-mssql.sql`**:
-   - For Microsoft SQL Server / Azure SQL / Docker SQL Server (used in [07-db-connection-mssql.md](../docs/07-db-connection-mssql.md)).
+   - For Microsoft SQL Server / Azure SQL / Docker SQL Server (used in [02-db-connection-mssql.md](../docs/02-db-connection-mssql.md)).
    - Creates the `[dbo].[staff]` table and inserts identical sample records with MSSQL-specific types (`NVARCHAR`, `IDENTITY`, `DECIMAL(18,2)`).

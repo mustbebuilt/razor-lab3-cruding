@@ -5,9 +5,9 @@ namespace MyRazorApp.Pages.Staff;
 public class IndexModel : PageModel
 {
     // -------------------------------------------------------------------------
-    // LAB 2 - STEP 06: Database Integration
+    // LAB 2 - STEP 01: Database Integration
     // -------------------------------------------------------------------------
-    // In Step 06, you will:
+    // In Step 01, you will:
     // 1. Install Microsoft.EntityFrameworkCore.Sqlite
     // 2. Create Models/Staff.cs and Data/ApplicationDbContext.cs
     // 3. Register ApplicationDbContext in Program.cs
@@ -30,10 +30,10 @@ public class IndexModel : PageModel
     //    }
     // -------------------------------------------------------------------------
 
-    public string StatusMessage { get; set; } = "Database connection not yet configured. Follow Step 06 in the tutorial!";
+    public string StatusMessage { get; set; } = "Database connection not yet configured. Follow Step 01 in the tutorial!";
 
     public void OnGet()
     {
-        // Executes when student visits /Staff or /Staff/Index before Step 06 is completed
+        // Executes when student visits /Staff or /Staff/Index before Step 01 is completed
     }
 }

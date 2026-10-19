@@ -71,10 +71,10 @@ The tutorial instructions are published in the project wiki:
 
 | Step | Topic | Description |
 |:---:|:---|:---|
-| **06** | [SQLite Database Integration](https://github.com/mustbebuilt/webdev-razor-lab2-data/wiki/06.-SQLite-Database-Integration) | Install EF Core, seed `Data/staff.db`, create `Staff.cs` & `ApplicationDbContext.cs`, and list staff. |
-| **07** | [MSSQL Database Integration](https://github.com/mustbebuilt/webdev-razor-lab2-data/wiki/07.-MSSQL-Database-Integration) | *(Alternative)* Learn how EF Core connects to Microsoft SQL Server / Azure SQL. |
-| **08** | [Route Parameters & Details Page](https://github.com/mustbebuilt/webdev-razor-lab2-data/wiki/08.-Data-Routing-and-Details) | Pass `asp-route-id`, constrain routes with `@page "{id:int}"`, and display single records. |
-| **08a** | [Searching Data with LINQ](https://github.com/mustbebuilt/webdev-razor-lab2-data/wiki/08a.-Searching-the-Data) | GET form model binding (`[BindProperty(SupportsGet = true)]`) and dynamic deferred LINQ filtering. |
+| **01** | [SQLite Database Integration](https://github.com/mustbebuilt/webdev-razor-lab2-data/wiki/01.-SQLite-Database-Integration) | Install EF Core, seed `Data/staff.db`, create `Staff.cs` & `ApplicationDbContext.cs`, and list staff. |
+| **02** | [MSSQL Database Integration](https://github.com/mustbebuilt/webdev-razor-lab2-data/wiki/02.-MSSQL-Database-Integration) | *(Alternative)* Learn how EF Core connects to Microsoft SQL Server / Azure SQL. |
+| **03** | [Route Parameters & Details Page](https://github.com/mustbebuilt/webdev-razor-lab2-data/wiki/03.-Data-Routing-and-Details) | Pass `asp-route-id`, constrain routes with `@page "{id:int}"`, and display single records. |
+| **04** | [Searching Data with LINQ](https://github.com/mustbebuilt/webdev-razor-lab2-data/wiki/04.-Searching-the-Data) | GET form model binding (`[BindProperty(SupportsGet = true)]`) and dynamic deferred LINQ filtering. |
 
 ---
 
@@ -218,7 +218,7 @@ Then update `Pages/Staff/Index.cshtml` to iterate over `@Model.StaffMembers` usi
 ├── appsettings.Development.json # Development environment settings
 ├── Data/
 │   ├── README.md                # Guidance for student database creation
-│   └── (staff.db)               # Created locally by students in Step 06
+│   └── (staff.db)               # Created locally by students in Step 01
 ├── Models/
 │   └── README.md                # Reserved for Staff.cs entity model
 ├── Pages/
@@ -231,7 +231,7 @@ Then update `Pages/Staff/Index.cshtml` to iterate over `@Model.StaffMembers` usi
 │   ├── Shared/
 │   │   └── _Layout.cshtml       # Master responsive layout template
 │   └── Staff/
-│       └── Index.cshtml/.cs     # Staff Directory starter (Target for Steps 06 & 08a)
+│       └── Index.cshtml/.cs     # Staff Directory starter (Target for Steps 01 & 04)
 ├── resources/
 │   ├── README.md                # Details on database seed files
 │   ├── staff-sqlite.sql         # SQLite DDL and 6 seed records

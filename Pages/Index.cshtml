@@ -32,16 +32,16 @@
                 <strong>Create &amp; seed your local database:</strong> Run <code>sqlite3 Data/staff.db &lt; resources/staff-sqlite.sql</code> to create the SQLite table and seed 6 staff records.
             </li>
             <li>
-                <strong>Follow Step 06 in the Wiki:</strong> Add <code>Microsoft.EntityFrameworkCore.Sqlite</code>, create <code>Models/Staff.cs</code>, build <code>Data/ApplicationDbContext.cs</code>, and register it in <code>Program.cs</code>.
+                <strong>Follow Step 01 in the Wiki:</strong> Add <code>Microsoft.EntityFrameworkCore.Sqlite</code>, create <code>Models/Staff.cs</code>, build <code>Data/ApplicationDbContext.cs</code>, and register it in <code>Program.cs</code>.
             </li>
             <li>
                 <strong>Render the Staff Directory:</strong> Update <code>Pages/Staff/Index.cshtml</code> and its code-behind to query the staff table with <code>ToListAsync()</code>.
             </li>
             <li>
-                <strong>Follow Step 08:</strong> Add a parameterized Details page (<code>/Staff/Details/{id}</code>) to inspect individual staff records by primary key.
+                <strong>Follow Step 03:</strong> Add a parameterized Details page (<code>/Staff/Details/{id}</code>) to inspect individual staff records by primary key.
             </li>
             <li>
-                <strong>Follow Step 08a:</strong> Add an HTTP GET search form and dynamic last-name filtering using <code>IQueryable&lt;Staff&gt;</code>.
+                <strong>Follow Step 04:</strong> Add an HTTP GET search form and dynamic last-name filtering using <code>IQueryable&lt;Staff&gt;</code>.
             </li>
         </ol>
     </div>
@@ -51,7 +51,7 @@
 <div class="demo-grid">
     <div class="demo-card">
         <div class="demo-card-header">
-            <span class="step-pill pill-teal">Step 06</span>
+            <span class="step-pill pill-teal">Step 01</span>
             <h3>SQLite &amp; EF Core Integration</h3>
         </div>
         <p>
@@ -62,7 +62,7 @@
 
     <div class="demo-card">
         <div class="demo-card-header">
-            <span class="step-pill pill-teal">Step 08</span>
+            <span class="step-pill pill-teal">Step 03</span>
             <h3>Route Parameters &amp; Details</h3>
         </div>
         <p>
@@ -73,7 +73,7 @@
 
     <div class="demo-card">
         <div class="demo-card-header">
-            <span class="step-pill pill-amber">Step 08a</span>
+            <span class="step-pill pill-amber">Step 04</span>
             <h3>Dynamic Search &amp; Model Binding</h3>
         </div>
         <p>
@@ -84,12 +84,12 @@
 
     <div class="demo-card">
         <div class="demo-card-header">
-            <span class="step-pill">Step 07</span>
+            <span class="step-pill">Step 02</span>
             <h3>MSSQL Database (Alternative)</h3>
         </div>
         <p>
             Explore enterprise database connectivity using Microsoft SQL Server, Azure SQL, or Docker containers. Learn how EF Core Migrations maintain relational database schemas in team environments.
         </p>
-        <a href="https://github.com/mustbebuilt/webdev-razor-lab2-data/wiki/07.-MSSQL-Database-Integration" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">View MSSQL Guide &rarr;</a>
+        <a href="https://github.com/mustbebuilt/webdev-razor-lab2-data/wiki/02.-MSSQL-Database-Integration" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">View MSSQL Guide &rarr;</a>
     </div>
 </div>

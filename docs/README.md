@@ -4,24 +4,24 @@ This directory contains the documentation and tutorial guides for **Lab 2: Data 
 
 ## Tutorial Modules
 
-1. **[06. SQLite Database Integration](06-db-connection-sqlite.md)**:
+1. **[01. SQLite Database Integration](01-db-connection-sqlite.md)**:
    - Creating and seeding the local SQLite database (`Data/staff.db`)
    - Setting up Entity Framework Core with `Microsoft.EntityFrameworkCore.Sqlite`
    - Creating the `Staff` model and `ApplicationDbContext`
    - Dependency Injection in `Program.cs` and `Pages/Staff/Index.cshtml.cs`
    - Rendering the staff directory table
 
-2. **[07. MSSQL Database Integration (Alternative)](07-db-connection-mssql.md)**:
+2. **[02. MSSQL Database Integration (Alternative)](02-db-connection-mssql.md)**:
    - Connecting to Microsoft SQL Server / Azure SQL / Docker
    - Using `Microsoft.EntityFrameworkCore.SqlServer`
    - Working with EF Core Migrations (`dotnet ef migrations add` & `dotnet ef database update`)
 
-3. **[08. Route Parameters & Staff Details](08-data-routing.md)**:
+3. **[03. Route Parameters & Staff Details](03-data-routing.md)**:
    - Generating links with `asp-route-id`
    - Defining route templates with `@page "{id:int}"`
    - Retrieving single records with `_context.Staff.FindAsync(id)`
 
-4. **[08a. Searching Data](08a-searching-the-data.md)**:
+4. **[04. Searching Data](04-searching-the-data.md)**:
    - GET form model binding with `[BindProperty(SupportsGet = true)]`
    - Constructing dynamic queries with deferred execution (`IQueryable<Staff>`)
    - Case-insensitive LINQ search filtering

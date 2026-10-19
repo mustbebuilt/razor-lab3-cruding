@@ -261,4 +261,4 @@ Display the queried data in the Razor view template using HTML and Razor express
 
 ## Alternative Database Option
 
-For connecting to Microsoft SQL Server instead of SQLite, see the [MSSQL Database Integration Guide](07-db-connection-mssql.md).
+For connecting to Microsoft SQL Server instead of SQLite, see the [MSSQL Database Integration Guide](02-db-connection-mssql.md).

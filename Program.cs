@@ -11,9 +11,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 
 // -----------------------------------------------------------------------------
-// LAB 2 - STEP 06: Database Connection Setup
+// LAB 2 - STEP 01: Database Connection Setup
 // -----------------------------------------------------------------------------
-// Once you complete Step 06 of the tutorial, you will:
+// Once you complete Step 01 of the tutorial, you will:
 // 1. Install the NuGet package:
 //    dotnet add package Microsoft.EntityFrameworkCore.Sqlite
 // 2. Create Models/Staff.cs and Data/ApplicationDbContext.cs
