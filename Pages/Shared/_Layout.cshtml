@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Lab 2: Data & Databases</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <a asp-page="/Index" class="brand-link">
+                <span class="brand-icon">⚡</span>
+                <span>MyRazorApp</span>
+                <span class="brand-badge">Lab 2: Data</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a asp-page="/Index">Home</a></li>
+                    <li><a asp-page="/Staff/Index">Staff Directory</a></li>
+                    <li><a asp-page="/HttpDemo/Index">HTTP Demos</a></li>
+                    <li><a asp-page="/News">News</a></li>
+                    <li><a asp-page="/Privacy">Privacy</a></li>
+                    <li>
+                        <a href="https://github.com/mustbebuilt/webdev-razor-lab2-data/wiki" target="_blank" rel="noopener noreferrer" class="btn btn-sm nav-guide-btn">
+                            📖 Wiki Guide
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        @RenderBody()
+    </main>
+
+    <footer>
+        <p>&copy; @DateTime.Now.Year MyRazorApp &bull; Lab 2: Data &amp; Databases in ASP.NET Core Razor Pages &bull; @DateTime.Now.ToString("dd MMM yyyy")</p>
+    </footer>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>

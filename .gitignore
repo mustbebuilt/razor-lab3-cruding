@@ -1,0 +1,36 @@
+## Build and Temporary Output
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+## Visual Studio & Visual Studio Code
+.vs/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+*.user
+*.userosscache
+*.sln.docstates
+*.suo
+
+## Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+## Database Files (Students will build the database locally)
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+
+## User-specific / Local Configuration
+appsettings.Production.json
+appsettings.Local.json

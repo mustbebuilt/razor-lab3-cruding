@@ -1,0 +1,96 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Lab 2: Data & Databases Overview";
+}
+
+<div class="page-hero hero-blue">
+    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+        <span class="step-pill pill-teal">@Model.ModuleName</span>
+        <span class="step-pill">Student Starter</span>
+    </div>
+    <h1>@Model.LabTitle</h1>
+    <p class="lead">
+        Welcome to your starter project for <strong>Lab 2</strong>! In this lab, you will extend a basic ASP.NET Core Razor Pages application into a data-driven web app by connecting an SQLite database with Entity Framework Core, executing LINQ queries, passing route parameters, building dynamic search filters, and mastering HTTP request patterns.
+    </p>
+    <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.25rem;">
+        <a asp-page="/Staff/Index" class="btn btn-primary">Go to Staff Directory Starter &rarr;</a>
+        <a asp-page="/HttpDemo/Index" class="btn btn-outline">Explore HTTP Demos &rarr;</a>
+        <a href="https://github.com/mustbebuilt/webdev-razor-lab2-data/wiki" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+            📖 Open Wiki Tutorial Guide
+        </a>
+    </div>
+</div>
+
+<div class="alert alert-checklist">
+    <div class="checklist-title">
+        <span>🚀</span>
+        <span>Quick Start Checklist for Students</span>
+    </div>
+    <div class="checklist">
+        <ol>
+            <li>
+                <strong>Create &amp; seed your local database:</strong> Run <code>sqlite3 Data/staff.db &lt; resources/staff-sqlite.sql</code> to create the SQLite table and seed 6 staff records.
+            </li>
+            <li>
+                <strong>Follow Step 06 in the Wiki:</strong> Add <code>Microsoft.EntityFrameworkCore.Sqlite</code>, create <code>Models/Staff.cs</code>, build <code>Data/ApplicationDbContext.cs</code>, and register it in <code>Program.cs</code>.
+            </li>
+            <li>
+                <strong>Render the Staff Directory:</strong> Update <code>Pages/Staff/Index.cshtml</code> and its code-behind to query the staff table.
+            </li>
+            <li>
+                <strong>Follow Step 08 &amp; 08a:</strong> Add a parameterized Details page (<code>/Staff/Details/{id}</code>) and dynamic last-name search filtering.
+            </li>
+            <li>
+                <strong>Follow Step 08b:</strong> Explore the interactive HTTP demos to understand GET query strings, route parameters, and POST (PRG) workflows.
+            </li>
+        </ol>
+    </div>
+</div>
+
+<h2>Lab Learning Modules</h2>
+<div class="demo-grid">
+    <div class="demo-card">
+        <div class="demo-card-header">
+            <span class="step-pill pill-teal">Step 06</span>
+            <h3>SQLite &amp; EF Core Setup</h3>
+        </div>
+        <p>
+            Learn what an Object-Relational Mapper (ORM) is, install the EF Core SQLite provider, create your strongly-typed <code>Staff</code> entity model, configure your <code>ApplicationDbContext</code>, and register it with ASP.NET Core Dependency Injection.
+        </p>
+        <a asp-page="/Staff/Index" class="btn btn-outline btn-sm">Staff Directory Starter &rarr;</a>
+    </div>
+
+    <div class="demo-card">
+        <div class="demo-card-header">
+            <span class="step-pill pill-teal">Step 08</span>
+            <h3>Route Parameters &amp; Details</h3>
+        </div>
+        <p>
+            Use <code>asp-route-id</code> Tag Helpers and the <code>@@page "{id:int}"</code> route constraint to create a dedicated <strong>Staff Details</strong> page (<code>/Staff/Details/{id}</code>) that fetches records by primary key using <code>FindAsync(id)</code>.
+        </p>
+        <a asp-page="/Staff/Index" class="btn btn-outline btn-sm">View Details Workflow &rarr;</a>
+    </div>
+
+    <div class="demo-card">
+        <div class="demo-card-header">
+            <span class="step-pill pill-amber">Step 08a</span>
+            <h3>Dynamic Search &amp; Model Binding</h3>
+        </div>
+        <p>
+            Implement an HTTP GET search form with <code>[BindProperty(SupportsGet = true)]</code>. Build deferred LINQ queries dynamically using <code>IQueryable&lt;Staff&gt;</code> to filter staff records by last name.
+        </p>
+        <a asp-page="/Staff/Index" class="btn btn-outline btn-sm">Explore Search UI &rarr;</a>
+    </div>
+
+    <div class="demo-card">
+        <div class="demo-card-header">
+            <span class="step-pill">Step 08b</span>
+            <h3>HTTP Methods &amp; PRG Pattern</h3>
+        </div>
+        <p>
+            Explore live interactive demos covering HTTP GET query strings, URL route segments vs query strings, multiple route parameters, and safe HTTP POST submissions with the <strong>Post-Redirect-Get (PRG)</strong> pattern and TempData flash messages.
+        </p>
+        <a asp-page="/HttpDemo/Index" class="btn btn-outline btn-sm">Launch HTTP Demos &rarr;</a>
+    </div>
+</div>

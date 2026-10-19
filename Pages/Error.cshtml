@@ -1,0 +1,17 @@
+@page
+@model ErrorModel
+@{
+    ViewData["Title"] = "Error";
+}
+
+<div class="page-hero">
+    <h1 style="color: var(--danger);">An error occurred</h1>
+    <p class="lead">An unexpected error occurred while processing your request.</p>
+</div>
+
+@if (Model.ShowRequestId)
+{
+    <p>
+        <strong>Request ID:</strong> <code>@Model.RequestId</code>
+    </p>
+}
