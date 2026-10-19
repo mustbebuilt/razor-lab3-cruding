@@ -34,3 +34,6 @@ Thumbs.db
 ## User-specific / Local Configuration
 appsettings.Production.json
 appsettings.Local.json
+
+## Ignore docs directory
+docs
