@@ -4,7 +4,7 @@ Now that we have seen how data can be passed between the different components of
 
 We will use **SQLite** as our database for this guide. SQLite is a lightweight, zero-configuration, file-based database engine that is ideal for learning and rapid local development.
 
-This guide demonstrates connecting an SQLite database (`Data/staff.db`) to an ASP.NET Core Razor Pages application. You can find the SQL script to create and seed the staff table in [resources/staff-sqlite.sql](resources/staff-sqlite.sql).
+This guide demonstrates connecting an SQLite database (`Data/staff.db`) to an ASP.NET Core Razor Pages application. You can find the SQL script to create and seed the staff table in [resources/staff-sqlite.sql](../resources/staff-sqlite.sql).
 
 ---
 
@@ -262,3 +262,9 @@ Display the queried data in the Razor view template using HTML and Razor express
 ## Alternative Database Option
 
 For connecting to Microsoft SQL Server instead of SQLite, see the [MSSQL Database Integration Guide](02-db-connection-mssql.md).
+
+---
+
+## Next Step
+
+Proceed to **[Step 03: Route Parameters & Staff Details](03-data-routing.md)** to link individual employee records to a dedicated details view.

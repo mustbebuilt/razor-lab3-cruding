@@ -162,3 +162,9 @@ Razor Pages supports various route parameter options depending on your URL requi
 1. Use `asp-page="/Staff/Details"` and `asp-route-id="@item.Id"` in the source view to generate the link.
 2. Add `@page "{id:int}"` at the top of the destination `.cshtml` file.
 3. Accept `int id` as a parameter in `OnGetAsync(int id)` within the code-behind `.cshtml.cs` file.
+
+---
+
+## Next Step
+
+Proceed to **[Step 04: Searching Data with LINQ](04-searching-the-data.md)** to add dynamic search filtering and query string binding.

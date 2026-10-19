@@ -194,3 +194,11 @@ Understanding when to use HTTP `GET` versus HTTP `POST` is vital when building w
 3. Apply `asp-for="PropertyName"` on input fields to bind inputs and retain user entry values on reload.
 4. Use `IQueryable<T>` with `_context.Entity.AsQueryable()` to apply LINQ `.Where()` filters dynamically before calling `.ToListAsync()`.
 5. Provide a "Clear" link (`asp-page="/Staff/Index"`) to allow users to easily reset search filters.
+
+---
+
+## Companion Demos: HTTP Methods & Routing
+
+For interactive demos exploring GET query strings, route parameters vs query strings, and POST with the Post-Redirect-Get (PRG) pattern, see the companion repository:  
+👉 [webdev-razor-http-methods](https://github.com/mustbebuilt/webdev-razor-http-methods)
+

@@ -4,7 +4,7 @@
 
 While SQLite is lightweight and file-based (making it great for rapid local prototyping), production enterprise web applications often connect to **Microsoft SQL Server (MSSQL)** or **Azure SQL Database**.
 
-Entity Framework Core (EF Core) allows you to target SQL Server with minimal code changes beyond changing the provider package and connection string. You can find the SQL script to create and seed the staff table in [resources/staff-mssql.sql](resources/staff-mssql.sql).
+Entity Framework Core (EF Core) allows you to target SQL Server with minimal code changes beyond changing the provider package and connection string. You can find the SQL script to create and seed the staff table in [resources/staff-mssql.sql](../resources/staff-mssql.sql).
 
 ---
 
@@ -267,3 +267,9 @@ public class IndexModel : PageModel
 | **Data Types** | Flexible (integer 0/1 for booleans) | Strict native types (`bit`, `decimal(18,2)`, `datetime2`) |
 | **Schema Management** | File creation or migrations | EF Core Migrations (`dotnet ef database update`) |
 | **Best Used For** | Prototyping, testing, mobile/desktop apps | Production web applications, enterprise systems, cloud |
+
+---
+
+## Next Step
+
+Proceed to **[Step 03: Route Parameters & Staff Details](03-data-routing.md)** to link individual employee records to a dedicated details view.

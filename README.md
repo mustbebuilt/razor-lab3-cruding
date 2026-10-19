@@ -7,7 +7,7 @@
 
 Welcome to **Lab 2**! This repository is the starter template designed for students to fork and clone. 
 
-In this lab, you will extend a clean ASP.NET Core Razor Pages web application into a dynamic, data-driven system by connecting a local SQLite database using **Entity Framework Core (EF Core)**, executing LINQ queries, passing route parameters to dedicated detail pages, building search filters, and mastering HTTP request patterns.
+In this lab, you will extend a clean ASP.NET Core Razor Pages web application into a dynamic, data-driven system by connecting a local SQLite database using **Entity Framework Core (EF Core)**, executing LINQ queries, passing route parameters to dedicated detail pages, and building dynamic search filters.
 
 > 📖 **Full Tutorial Guide**: Follow the step-by-step instructions in the [GitHub Wiki Guide](https://github.com/mustbebuilt/webdev-razor-lab2-data/wiki).
 
@@ -21,7 +21,8 @@ In this lab, you will extend a clean ASP.NET Core Razor Pages web application in
 - [Step-by-Step Instructions](#-step-by-step-instructions)
 - [Repository Structure](#-repository-structure)
 - [Database Schema & Seed Data](#-database-schema--seed-data)
-- [Interactive HTTP Demos](#-interactive-http-demos)
+- [Companion Demos: HTTP Methods & Routing](#-companion-demos-http-methods--routing)
+- [License & Attribution](#-license--attribution)
 
 ---
 
@@ -257,6 +258,13 @@ The sample company staff dataset features 6 employee records across Engineering,
 | 4 | David Smith | Finance | Financial Analyst | £55,000 | Yes |
 | 5 | Emma Watson | Marketing | Marketing Director | £60,000 | Yes |
 | 6 | Frank Wright | Sales | Account Executive | £45,000 | Yes |
+
+---
+
+## 💡 Companion Demos: HTTP Methods & Routing
+
+For interactive demos exploring GET query strings, route parameters vs query strings, and POST with the Post-Redirect-Get (PRG) pattern, see the companion repository:  
+👉 [webdev-razor-http-methods](https://github.com/mustbebuilt/webdev-razor-http-methods)
 
 ---
 
