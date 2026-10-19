@@ -71,11 +71,10 @@ The tutorial instructions are published in the project wiki:
 
 | Step | Topic | Description |
 |:---:|:---|:---|
-| **06** | [SQLite Database Integration](https://github.com/mustbebuilt/webdev-razor-lab2-data/wiki/06.-SQLite-Database-Integration) | Install EF Core, create `Models/Staff.cs`, `Data/ApplicationDbContext.cs`, register service, and list staff. |
+| **06** | [SQLite Database Integration](https://github.com/mustbebuilt/webdev-razor-lab2-data/wiki/06.-SQLite-Database-Integration) | Install EF Core, seed `Data/staff.db`, create `Staff.cs` & `ApplicationDbContext.cs`, and list staff. |
 | **07** | [MSSQL Database Integration](https://github.com/mustbebuilt/webdev-razor-lab2-data/wiki/07.-MSSQL-Database-Integration) | *(Alternative)* Learn how EF Core connects to Microsoft SQL Server / Azure SQL. |
 | **08** | [Route Parameters & Details Page](https://github.com/mustbebuilt/webdev-razor-lab2-data/wiki/08.-Data-Routing-and-Details) | Pass `asp-route-id`, constrain routes with `@page "{id:int}"`, and display single records. |
 | **08a** | [Searching Data with LINQ](https://github.com/mustbebuilt/webdev-razor-lab2-data/wiki/08a.-Searching-the-Data) | GET form model binding (`[BindProperty(SupportsGet = true)]`) and dynamic deferred LINQ filtering. |
-| **08b** | [HTTP Methods & Routing Demos](https://github.com/mustbebuilt/webdev-razor-lab2-data/wiki/08b.-HTTP-Methods-and-Routing) | Explore GET query strings, route segments vs queries, and HTTP POST with Post-Redirect-Get (PRG). |
 
 ---
 
@@ -231,14 +230,8 @@ Then update `Pages/Staff/Index.cshtml` to iterate over `@Model.StaffMembers` usi
 │   ├── Error.cshtml/.cs         # Error handler
 │   ├── Shared/
 │   │   └── _Layout.cshtml       # Master responsive layout template
-│   ├── Staff/
-│   │   └── Index.cshtml/.cs     # Staff Directory starter (Target for Steps 06 & 08a)
-│   └── HttpDemo/                # Interactive HTTP Method & Routing Demos (Step 08b)
-│       ├── Index.cshtml/.cs     # HTTP demos landing overview
-│       ├── GetDemo.cshtml/.cs   # Query strings and GET model binding
-│       ├── RouteDemo.cshtml/.cs # Route parameters vs query strings
-│       ├── MultiRouteDemo.cshtml/.cs # Multiple URL path segments
-│       └── PostDemo.cshtml/.cs  # POST form, validation, and PRG pattern
+│   └── Staff/
+│       └── Index.cshtml/.cs     # Staff Directory starter (Target for Steps 06 & 08a)
 ├── resources/
 │   ├── README.md                # Details on database seed files
 │   ├── staff-sqlite.sql         # SQLite DDL and 6 seed records
@@ -264,17 +257,6 @@ The sample company staff dataset features 6 employee records across Engineering,
 | 4 | David Smith | Finance | Financial Analyst | £55,000 | Yes |
 | 5 | Emma Watson | Marketing | Marketing Director | £60,000 | Yes |
 | 6 | Frank Wright | Sales | Account Executive | £45,000 | Yes |
-
----
-
-## 🌐 Interactive HTTP Demos
-
-Navigate to **HTTP Demos** in the application menu (`/HttpDemo`) to test:
-
-1. **HTTP GET & Query Strings** (`/HttpDemo/GetDemo`): Filter courses by category, difficulty level, and keyword using URL query strings (`?Subject=Computer+Science&Level=Beginner`).
-2. **Route Parameters vs Query Strings** (`/HttpDemo/RouteDemo/101?tab=compensation`): See how route segments identify resources while query strings modify view state.
-3. **Multiple Route Parameters** (`/HttpDemo/MultiRouteDemo/engineering/101`): Test multi-segment URL paths using `@page "{department?}/{id:int?}"`.
-4. **HTTP POST & Post-Redirect-Get** (`/HttpDemo/PostDemo`): Submit forms safely in the request body and prevent duplicate submissions with PRG and `TempData` flash messages.
 
 ---
 

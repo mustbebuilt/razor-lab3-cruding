@@ -11,11 +11,10 @@
     </div>
     <h1>@Model.LabTitle</h1>
     <p class="lead">
-        Welcome to your starter project for <strong>Lab 2</strong>! In this lab, you will extend a basic ASP.NET Core Razor Pages application into a data-driven web app by connecting an SQLite database with Entity Framework Core, executing LINQ queries, passing route parameters, building dynamic search filters, and mastering HTTP request patterns.
+        Welcome to your starter project for <strong>Lab 2</strong>! In this lab, you will extend a basic ASP.NET Core Razor Pages application into a data-driven web app by connecting an SQLite database with Entity Framework Core, executing LINQ queries, passing route parameters to view staff details, and building dynamic search filters.
     </p>
     <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.25rem;">
         <a asp-page="/Staff/Index" class="btn btn-primary">Go to Staff Directory Starter &rarr;</a>
-        <a asp-page="/HttpDemo/Index" class="btn btn-outline">Explore HTTP Demos &rarr;</a>
         <a href="https://github.com/mustbebuilt/webdev-razor-lab2-data/wiki" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
             📖 Open Wiki Tutorial Guide
         </a>
@@ -36,13 +35,13 @@
                 <strong>Follow Step 06 in the Wiki:</strong> Add <code>Microsoft.EntityFrameworkCore.Sqlite</code>, create <code>Models/Staff.cs</code>, build <code>Data/ApplicationDbContext.cs</code>, and register it in <code>Program.cs</code>.
             </li>
             <li>
-                <strong>Render the Staff Directory:</strong> Update <code>Pages/Staff/Index.cshtml</code> and its code-behind to query the staff table.
+                <strong>Render the Staff Directory:</strong> Update <code>Pages/Staff/Index.cshtml</code> and its code-behind to query the staff table with <code>ToListAsync()</code>.
             </li>
             <li>
-                <strong>Follow Step 08 &amp; 08a:</strong> Add a parameterized Details page (<code>/Staff/Details/{id}</code>) and dynamic last-name search filtering.
+                <strong>Follow Step 08:</strong> Add a parameterized Details page (<code>/Staff/Details/{id}</code>) to inspect individual staff records by primary key.
             </li>
             <li>
-                <strong>Follow Step 08b:</strong> Explore the interactive HTTP demos to understand GET query strings, route parameters, and POST (PRG) workflows.
+                <strong>Follow Step 08a:</strong> Add an HTTP GET search form and dynamic last-name filtering using <code>IQueryable&lt;Staff&gt;</code>.
             </li>
         </ol>
     </div>
@@ -53,7 +52,7 @@
     <div class="demo-card">
         <div class="demo-card-header">
             <span class="step-pill pill-teal">Step 06</span>
-            <h3>SQLite &amp; EF Core Setup</h3>
+            <h3>SQLite &amp; EF Core Integration</h3>
         </div>
         <p>
             Learn what an Object-Relational Mapper (ORM) is, install the EF Core SQLite provider, create your strongly-typed <code>Staff</code> entity model, configure your <code>ApplicationDbContext</code>, and register it with ASP.NET Core Dependency Injection.
@@ -85,12 +84,12 @@
 
     <div class="demo-card">
         <div class="demo-card-header">
-            <span class="step-pill">Step 08b</span>
-            <h3>HTTP Methods &amp; PRG Pattern</h3>
+            <span class="step-pill">Step 07</span>
+            <h3>MSSQL Database (Alternative)</h3>
         </div>
         <p>
-            Explore live interactive demos covering HTTP GET query strings, URL route segments vs query strings, multiple route parameters, and safe HTTP POST submissions with the <strong>Post-Redirect-Get (PRG)</strong> pattern and TempData flash messages.
+            Explore enterprise database connectivity using Microsoft SQL Server, Azure SQL, or Docker containers. Learn how EF Core Migrations maintain relational database schemas in team environments.
         </p>
-        <a asp-page="/HttpDemo/Index" class="btn btn-outline btn-sm">Launch HTTP Demos &rarr;</a>
+        <a href="https://github.com/mustbebuilt/webdev-razor-lab2-data/wiki/07.-MSSQL-Database-Integration" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">View MSSQL Guide &rarr;</a>
     </div>
 </div>
