@@ -1,113 +1,36 @@
 @page
-@model MyRazorApp.Pages.Staff.IndexModel
+@model rz.Pages.Staff.IndexModel
 @{
-    ViewData["Title"] = "Staff Directory (Starter)";
+    ViewData["Title"] = "Staff Directory";
 }
 
-<div class="page-hero hero-blue">
-    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
-        <span class="step-pill pill-teal">Step 01 &amp; 03</span>
-        <span class="step-pill pill-amber">Starter Exercise</span>
-    </div>
-    <h1>Staff Directory</h1>
-    <p class="lead">
-        This is the target page for your database query exercises. Right now, this is a starter placeholder. In <strong>Step 01</strong>, you will connect your SQLite database and display live staff records here.
-    </p>
-</div>
+<h1>Staff Directory</h1>
+<p>Total Active Employees: @Model.ActiveCount</p>
 
-<div class="alert alert-warning">
-    <strong>⚡ Database Connection Pending:</strong> @Model.StatusMessage
-</div>
-
-<div class="alert alert-checklist">
-    <div class="checklist-title">
-        <span>📋</span>
-        <span>What you need to complete in Step 01:</span>
-    </div>
-    <div class="checklist">
-        <ol>
-            <li>
-                <strong>Initialize the SQLite database file:</strong>
-                <pre><code>sqlite3 Data/staff.db &lt; resources/staff-sqlite.sql</code></pre>
-            </li>
-            <li>
-                <strong>Install the EF Core SQLite NuGet package:</strong>
-                <pre><code>dotnet add package Microsoft.EntityFrameworkCore.Sqlite</code></pre>
-            </li>
-            <li>
-                <strong>Create the Entity Model (<code>Models/Staff.cs</code>):</strong>
-                Define the <code>Staff</code> class mapping to the database table columns.
-            </li>
-            <li>
-                <strong>Create the Database Context (<code>Data/ApplicationDbContext.cs</code>):</strong>
-                Inherit from <code>DbContext</code> and declare <code>public DbSet&lt;Staff&gt; Staff { get; set; } = null!;</code>.
-            </li>
-            <li>
-                <strong>Register the DbContext in <code>Program.cs</code>:</strong>
-                Uncomment the <code>builder.Services.AddDbContext&lt;ApplicationDbContext&gt;(...)</code> service registration.
-            </li>
-            <li>
-                <strong>Update this page (<code>Pages/Staff/Index.cshtml.cs</code> and <code>Pages/Staff/Index.cshtml</code>):</strong>
-                Inject <code>ApplicationDbContext</code> into the constructor, execute <code>await _context.Staff.ToListAsync()</code> in <code>OnGetAsync()</code>, and render the employee table!
-            </li>
-        </ol>
-    </div>
-</div>
-
-<h2>Preview: Expected Table Schema</h2>
-<p>Once you implement your database queries, your page will render records into a table formatted like this:</p>
-
-<div class="table-container">
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Department</th>
-                <th>Job Title</th>
-                <th>Salary</th>
-                <th>Status</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><em>1</em></td>
-                <td><strong>Alice Johnson</strong></td>
-                <td>alice.johnson@company.com</td>
-                <td>Engineering</td>
-                <td>Engineering Manager</td>
-                <td>&pound;55,000.00</td>
-                <td><span class="status-active">Active</span></td>
-                <td><span style="color: var(--text-light);">(Details in Step 03)</span></td>
-            </tr>
-            <tr>
-                <td><em>2</em></td>
-                <td><strong>Brian Lee</strong></td>
-                <td>brian.lee@company.com</td>
-                <td>Engineering</td>
-                <td>Senior Developer</td>
-                <td>&pound;52,000.00</td>
-                <td><span class="status-active">Active</span></td>
-                <td><span style="color: var(--text-light);">(Details in Step 03)</span></td>
-            </tr>
-            <tr>
-                <td><em>3</em></td>
-                <td><strong>Carla Gomez</strong></td>
-                <td>carla.gomez@company.com</td>
-                <td>Human Resources</td>
-                <td>HR Specialist</td>
-                <td>&pound;48,000.00</td>
-                <td><span class="status-inactive">Inactive</span></td>
-                <td><span style="color: var(--text-light);">(Details in Step 03)</span></td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
-<p>
-    <a href="https://github.com/mustbebuilt/webdev-razor-lab2-data/wiki/01.-SQLite-Database-Integration" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-        📖 Open Step 01 Tutorial Guide &rarr;
-    </a>
-</p>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var member in Model.StaffMembers)
+{
+    <tr>
+        <td>@member.StaffId</td>
+        <td>
+            <!-- Option A: Link the staff member's name -->
+            <a asp-page="/Staff/Details" asp-route-id="@member.StaffId">
+                @member.FirstName @member.LastName
+            </a>
+        </td>
+        <td>
+            <!-- Option B: Action link column -->
+            <a asp-page="/Staff/Details" asp-route-id="@member.StaffId">Details</a>
+        </td>
+    </tr>
+}
+    </tbody>
+</table>

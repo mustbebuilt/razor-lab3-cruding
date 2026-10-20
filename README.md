@@ -59,6 +59,7 @@ cd webdev-razor-lab2-data
 Restore dependencies and launch the local Kestrel development server:
 
 ```bash
+
 dotnet run
 ```
 
@@ -268,6 +269,7 @@ For interactive demos exploring GET query strings, route parameters vs query str
 
 ---
 
-## 📄 License & Attribution
+## Troubleshooting
 
-Created for university/college Web Application Development modules. Free for educational use.
+dotnet dev-certs https --trust
+

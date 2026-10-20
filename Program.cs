@@ -1,4 +1,6 @@
 using System.Globalization;
+using Microsoft.EntityFrameworkCore;
+using rz.Data;
 
 // Set default culture to en-GB so currency and date formatting match the lab tutorial (£)
 var cultureInfo = new CultureInfo("en-GB");
@@ -6,6 +8,10 @@ CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
 CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Register SQLite DbContext service with Dependency Injection
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Add services to the container.
 builder.Services.AddRazorPages();
@@ -25,6 +31,8 @@ builder.Services.AddRazorPages();
 //     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 // -----------------------------------------------------------------------------
 
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -35,12 +43,12 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapStaticAssets();
-app.MapRazorPages()
-   .WithStaticAssets();
+app.MapRazorPages();
 
 app.Run();
+
