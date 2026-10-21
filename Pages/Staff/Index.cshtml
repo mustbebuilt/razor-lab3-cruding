@@ -7,30 +7,48 @@
 <h1>Staff Directory</h1>
 <p>Total Active Employees: @Model.ActiveCount</p>
 
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Details</th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var member in Model.StaffMembers)
-{
-    <tr>
-        <td>@member.StaffId</td>
-        <td>
-            <!-- Option A: Link the staff member's name -->
-            <a asp-page="/Staff/Details" asp-route-id="@member.StaffId">
-                @member.FirstName @member.LastName
-            </a>
-        </td>
-        <td>
-            <!-- Option B: Action link column -->
-            <a asp-page="/Staff/Details" asp-route-id="@member.StaffId">Details</a>
-        </td>
-    </tr>
-}
-    </tbody>
-</table>
+    <!-- Search Form using HTTP GET -->
+    <form method="get" class="search-form">
+        <div class="search-group">
+            <input type="text" asp-for="SearchTerm" placeholder="Search by last name..." class="search-input" />
+            <button type="submit" class="btn btn-primary">Search</button>
+
+            <!-- Render Clear button only when a filter is currently active -->
+            @if (!string.IsNullOrWhiteSpace(Model.SearchTerm))
+            {
+                <a asp-page="/Staff/Index" class="btn btn-secondary">Clear</a>
+            }
+        </div>
+    </form>
+
+ <!-- Display message when search returns no matching records -->
+    @if (!Model.StaffMembers.Any())
+    {
+        <div class="no-results">
+            <p>No staff members found matching "<strong>@Model.SearchTerm</strong>".</p>
+        </div>
+    }
+    else
+    {
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var member in Model.StaffMembers)
+                {
+                    <tr>
+                        <td>@member.StaffId</td>
+                        <td>@member.FirstName @member.LastName</td>
+                        <td>
+                            <a asp-page="/Staff/Details" asp-route-id="@member.StaffId">Details</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }

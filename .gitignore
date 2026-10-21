@@ -24,12 +24,6 @@
 ehthumbs.db
 Thumbs.db
 
-## Database Files (Students will build the database locally)
-*.db
-*.db-shm
-*.db-wal
-*.sqlite
-*.sqlite3
 
 ## User-specific / Local Configuration
 appsettings.Production.json
