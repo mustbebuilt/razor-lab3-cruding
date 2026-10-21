@@ -1,15 +1,15 @@
-# Lab 2: Data & Databases in ASP.NET Core Razor Pages (Starter Application)
+# Lab 3: CRUD Operations in ASP.NET Core Razor Pages (Starter Application)
 
 [![.NET 10](https://img.shields.io/badge/.NET-10.0-512bd4.svg)](https://dotnet.microsoft.com/)
 [![Razor Pages](https://img.shields.io/badge/ASP.NET%20Core-Razor%20Pages-0284c7.svg)](https://learn.microsoft.com/aspnet/core/razor-pages/)
 [![SQLite](https://img.shields.io/badge/Database-SQLite-003B57.svg)](https://www.sqlite.org/)
 [![EF Core](https://img.shields.io/badge/ORM-Entity%20Framework%20Core-68217a.svg)](https://learn.microsoft.com/ef/core/)
 
-Welcome to **Lab 2**! This repository is the starter template designed for students to fork and clone. 
+Welcome to **Lab 3**! This repository is the starter template designed for students to fork and clone. 
 
-In this lab, you will extend a clean ASP.NET Core Razor Pages web application into a dynamic, data-driven system by connecting a local SQLite database using **Entity Framework Core (EF Core)**, executing LINQ queries, passing route parameters to dedicated detail pages, and building dynamic search filters.
+In this lab, you will extend a data-driven ASP.NET Core Razor Pages web application (started in Lab 2) by implementing full **CRUD (Create, Read, Update, Delete)** operations with **Entity Framework Core (EF Core)** and **SQLite**. You will build HTML input forms, handle HTTP POST requests, validate user input with Data Annotations, enforce safe data-deletion workflows, and apply the **Post-Redirect-Get (PRG)** design pattern with `TempData` user feedback.
 
-> 📖 **Full Tutorial Guide**: Follow the step-by-step instructions in the [GitHub Wiki Guide](https://github.com/mustbebuilt/webdev-razor-lab2-data/wiki).
+> 📖 **Full Tutorial Guide**: Follow the step-by-step instructions in the [GitHub Wiki Guide](https://github.com/mustbebuilt/razor-lab3-cruding/wiki).
 
 ---
 
@@ -18,11 +18,10 @@ In this lab, you will extend a clean ASP.NET Core Razor Pages web application in
 - [Requirements & Prerequisites](#-requirements--prerequisites)
 - [Quick Start](#-quick-start)
 - [Lab Tutorial Syllabus](#-lab-tutorial-syllabus)
-- [Step-by-Step Instructions](#-step-by-step-instructions)
+- [Reference & Supplementary Guides](#-reference--supplementary-guides)
 - [Repository Structure](#-repository-structure)
-- [Database Schema & Seed Data](#-database-schema--seed-data)
-- [Companion Demos: HTTP Methods & Routing](#-companion-demos-http-methods--routing)
-- [License & Attribution](#-license--attribution)
+- [Database Schema & Resetting the Database](#-database-schema--resetting-the-database)
+- [Companion Labs](#-companion-labs)
 
 ---
 
@@ -33,8 +32,8 @@ Before starting this lab, ensure you have:
 - **.NET 10 SDK** (or .NET 8.0+) - [Download .NET](https://dotnet.microsoft.com/download)
 - **Visual Studio Code** - [Download VS Code](https://code.visualstudio.com/)
   - Recommended extensions: *C# Dev Kit*, *SQLite Viewer* (optional)
-- **SQLite 3 CLI** (pre-installed on macOS/Linux; available via `winget install SQLite.SQLite` or package manager on Windows)
-- Familiarity with Lab 1 concepts (Razor syntax, layouts, PageModels, and Tag Helpers).
+- **SQLite 3 CLI** (pre-installed on macOS/Linux; available via package managers on Windows)
+- Completed **Lab 1** (Razor syntax, layouts, PageModels, Tag Helpers) and **Lab 2** (EF Core SQLite setup, DbContext, query filtering, and details routing).
 
 Verify your installed .NET SDK version:
 ```bash
@@ -50,164 +49,49 @@ dotnet --version
 Fork this repository to your own GitHub account, then clone it to your development machine:
 
 ```bash
-git clone https://github.com/<YOUR-USERNAME>/webdev-razor-lab2-data.git
-cd webdev-razor-lab2-data
+git clone https://github.com/<YOUR-USERNAME>/razor-lab3-cruding.git
+cd razor-lab3-cruding
 ```
 
 ### 2. Run the Starter Application
 
-Restore dependencies and launch the local Kestrel development server:
+Launch the local Kestrel development server:
 
 ```bash
-
 dotnet run
 ```
 
-Open your browser to the local URL displayed in the terminal (typically `http://localhost:5000` or `https://localhost:5001`).
+For automatic hot-reloading as you edit Razor files and C# models, use:
+
+```bash
+dotnet watch run
+```
+
+Open your browser to the local URL displayed in the terminal (typically `http://localhost:5000`).
 
 ---
 
 ## 📚 Lab Tutorial Syllabus
 
-The tutorial instructions are published in the project wiki:
+The step-by-step lab instructions are published in the [Lab 3 GitHub Wiki](https://github.com/mustbebuilt/razor-lab3-cruding/wiki):
 
-| Step | Topic | Description |
+| Step | Tutorial Page | Description |
 |:---:|:---|:---|
-| **01** | [SQLite Database Integration](https://github.com/mustbebuilt/webdev-razor-lab2-data/wiki/01.-SQLite-Database-Integration) | Install EF Core, seed `Data/staff.db`, create `Staff.cs` & `ApplicationDbContext.cs`, and list staff. |
-| **02** | [MSSQL Database Integration](https://github.com/mustbebuilt/webdev-razor-lab2-data/wiki/02.-MSSQL-Database-Integration) | *(Alternative)* Learn how EF Core connects to Microsoft SQL Server / Azure SQL. |
-| **03** | [Route Parameters & Details Page](https://github.com/mustbebuilt/webdev-razor-lab2-data/wiki/03.-Data-Routing-and-Details) | Pass `asp-route-id`, constrain routes with `@page "{id:int}"`, and display single records. |
-| **04** | [Searching Data with LINQ](https://github.com/mustbebuilt/webdev-razor-lab2-data/wiki/04.-Searching-the-Data) | GET form model binding (`[BindProperty(SupportsGet = true)]`) and dynamic deferred LINQ filtering. |
+| **01** | [CRUD Overview & the PRG Pattern](https://github.com/mustbebuilt/razor-lab3-cruding/wiki/01.-CRUD-Overview-and-the-PRG-Pattern) | Explore CRUD concepts, distinguish GET vs POST, master the Post-Redirect-Get pattern, and inspect the starter codebase. |
+| **02** | [Inserting Data (Creating Records)](https://github.com/mustbebuilt/razor-lab3-cruding/wiki/02.-Inserting-Data-Creating-Records) | Build `Pages/Staff/Create.cshtml`, use `asp-for` Tag Helpers, handle `OnPostAsync()`, and insert records with `_context.Staff.Add()`. |
+| **03** | [Form Validation & Data Annotations](https://github.com/mustbebuilt/razor-lab3-cruding/wiki/03.-Form-Validation-and-Data-Annotations) | Apply validation attributes (`[Required]`, `[Range]`, `[EmailAddress]`), enforce `ModelState.IsValid`, and add client-side validation. |
+| **04** | [Editing Data (Updating Records)](https://github.com/mustbebuilt/razor-lab3-cruding/wiki/04.-Editing-Data-Updating-Records) | Create `Pages/Staff/Edit.cshtml`, bind route `{id:int}`, maintain hidden entity IDs, and update database records safely. |
+| **05** | [Deleting Data (Safe Deletion)](https://github.com/mustbebuilt/razor-lab3-cruding/wiki/05.-Deleting-Data-Safe-Deletion) | Understand why GET must never mutate data, implement a two-step confirmation page (`Delete.cshtml`), and remove records via POST. |
+| **06** | [User Feedback & UI Polish](https://github.com/mustbebuilt/razor-lab3-cruding/wiki/06.-User-Feedback-and-UI-Polish) | Provide flash alerts using `TempData`, add action buttons to the Staff Directory, and explore soft delete vs hard delete patterns. |
 
 ---
 
-## 📝 Step-by-Step Instructions
+## 📖 Reference & Supplementary Guides
 
-### Step 1: Create Your Local SQLite Database
-
-Students create the database themselves using the provided SQL script:
-
-```bash
-# Run from the project root directory
-sqlite3 Data/staff.db < resources/staff-sqlite.sql
-```
-
-Verify that the `staff` table has been seeded with 6 employees:
-```bash
-sqlite3 Data/staff.db "SELECT staff_id, first_name, last_name, department, salary FROM staff;"
-```
-
-### Step 2: Install EF Core SQLite Provider
-
-```bash
-dotnet add package Microsoft.EntityFrameworkCore.Sqlite
-```
-
-### Step 3: Create the Entity Model (`Models/Staff.cs`)
-
-Create `Models/Staff.cs` representing the `staff` database table:
-
-```csharp
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace MyRazorApp.Models;
-
-public class Staff
-{
-    [Key]
-    [Column("staff_id")]
-    public int StaffId { get; set; }
-
-    [Column("first_name")]
-    public string FirstName { get; set; } = string.Empty;
-
-    [Column("last_name")]
-    public string LastName { get; set; } = string.Empty;
-
-    [Column("email")]
-    public string Email { get; set; } = string.Empty;
-
-    [Column("department")]
-    public string Department { get; set; } = string.Empty;
-
-    [Column("job_title")]
-    public string JobTitle { get; set; } = string.Empty;
-
-    [Column("hire_date")]
-    public string HireDate { get; set; } = string.Empty;
-
-    [Column("salary")]
-    public double Salary { get; set; }
-
-    [Column("is_active")]
-    public int IsActive { get; set; } // 0 = Inactive, 1 = Active
-}
-```
-
-### Step 4: Create the Database Context (`Data/ApplicationDbContext.cs`)
-
-Create `Data/ApplicationDbContext.cs`:
-
-```csharp
-using Microsoft.EntityFrameworkCore;
-using MyRazorApp.Models;
-
-namespace MyRazorApp.Data;
-
-public class ApplicationDbContext : DbContext
-{
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-        : base(options) { }
-
-    public DbSet<Staff> Staff { get; set; } = null!;
-}
-```
-
-### Step 5: Register DbContext in `Program.cs`
-
-In `Program.cs`, add the following before `builder.Build()`:
-
-```csharp
-using Microsoft.EntityFrameworkCore;
-using MyRazorApp.Data;
-
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
-```
-
-### Step 6: Connect `Pages/Staff/Index.cshtml` to SQLite
-
-Inject `ApplicationDbContext` into `Pages/Staff/Index.cshtml.cs`:
-
-```csharp
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
-using MyRazorApp.Data;
-using MyRazorApp.Models;
-
-namespace MyRazorApp.Pages.Staff;
-
-public class IndexModel : PageModel
-{
-    private readonly ApplicationDbContext _context;
-
-    public IndexModel(ApplicationDbContext context)
-    {
-        _context = context;
-    }
-
-    public List<Models.Staff> StaffMembers { get; set; } = [];
-    public int ActiveCount { get; set; }
-
-    public async Task OnGetAsync()
-    {
-        StaffMembers = await _context.Staff.ToListAsync();
-        ActiveCount = StaffMembers.Count(s => s.IsActive == 1);
-    }
-}
-```
-
-Then update `Pages/Staff/Index.cshtml` to iterate over `@Model.StaffMembers` using `@foreach`.
+| Guide | Description |
+|:---|:---|
+| [EF Core State & Concurrency](https://github.com/mustbebuilt/razor-lab3-cruding/wiki/90.-EF-Core-State-and-Concurrency) | Deep dive into `EntityState`, the EF Core `ChangeTracker`, connected vs disconnected entities, and concurrency conflict handling. |
+| [CRUD Operations Cheat Sheet](https://github.com/mustbebuilt/razor-lab3-cruding/wiki/91.-CRUD-Cheat-Sheet) | Quick-reference lookup table for routes, HTTP verbs, Tag Helpers, PageModel handlers, and EF Core methods. |
 
 ---
 
@@ -215,14 +99,16 @@ Then update `Pages/Staff/Index.cshtml` to iterate over `@Model.StaffMembers` usi
 
 ```text
 ├── MyRazorApp.csproj            # .NET 10 project definition
-├── Program.cs                   # Application entry point, middleware, DI services
+├── Program.cs                   # Application entry point, middleware, SQLite DI service
 ├── appsettings.json             # Configuration including SQLite connection string
 ├── appsettings.Development.json # Development environment settings
 ├── Data/
-│   ├── README.md                # Guidance for student database creation
-│   └── (staff.db)               # Created locally by students in Step 01
+│   ├── ApplicationDbContext.cs  # EF Core DbContext connecting Staff entity to SQLite
+│   ├── staff.db                 # Pre-configured SQLite database
+│   └── README.md                # Data documentation
 ├── Models/
-│   └── README.md                # Reserved for Staff.cs entity model
+│   ├── Staff.cs                 # Staff entity class with schema mappings & data annotations
+│   └── README.md                # Model documentation
 ├── Pages/
 │   ├── _ViewImports.cshtml      # Global TagHelpers and namespaces
 │   ├── _ViewStart.cshtml        # Default layout assignment
@@ -233,12 +119,15 @@ Then update `Pages/Staff/Index.cshtml` to iterate over `@Model.StaffMembers` usi
 │   ├── Shared/
 │   │   └── _Layout.cshtml       # Master responsive layout template
 │   └── Staff/
-│       └── Index.cshtml/.cs     # Staff Directory starter (Target for Steps 01 & 04)
+│       ├── Index.cshtml/.cs     # Staff Directory with search & active count
+│       └── Details.cshtml/.cs   # Staff member detail view (from Lab 2)
+│       └── (Create.cshtml/.cs)  # Created in Step 02
+│       └── (Edit.cshtml/.cs)    # Created in Step 04
+│       └── (Delete.cshtml/.cs)  # Created in Step 05
 ├── resources/
-│   ├── README.md                # Details on database seed files
+│   ├── README.md                # Database seed script details
 │   ├── staff-sqlite.sql         # SQLite DDL and 6 seed records
 │   └── staff-mssql.sql          # Microsoft SQL Server DDL and seed records
-├── docs/                        # Tutorial documentation (mirrored in Wiki)
 └── wwwroot/
     ├── css/site.css             # Vanilla CSS design system
     ├── js/site.js               # Client JavaScript
@@ -247,9 +136,9 @@ Then update `Pages/Staff/Index.cshtml` to iterate over `@Model.StaffMembers` usi
 
 ---
 
-## 🗄 Database Schema & Seed Data
+## 🗄 Database Schema & Resetting the Database
 
-The sample company staff dataset features 6 employee records across Engineering, HR, Finance, Marketing, and Sales:
+The starter repository includes a pre-seeded SQLite database in `Data/staff.db` containing 6 employee records across multiple departments:
 
 | Staff ID | Full Name | Department | Job Title | Salary | Active? |
 |:---:|:---|:---|:---|---:|:---:|
@@ -260,16 +149,18 @@ The sample company staff dataset features 6 employee records across Engineering,
 | 5 | Emma Watson | Marketing | Marketing Director | £60,000 | Yes |
 | 6 | Frank Wright | Sales | Account Executive | £45,000 | Yes |
 
+### Resetting the Database
+If you ever want to reset the database back to its initial state after testing create, update, or delete operations, execute:
+
+```bash
+sqlite3 Data/staff.db < resources/staff-sqlite.sql
+```
+
 ---
 
-## 💡 Companion Demos: HTTP Methods & Routing
+## 💡 Companion Labs
 
-For interactive demos exploring GET query strings, route parameters vs query strings, and POST with the Post-Redirect-Get (PRG) pattern, see the companion repository:  
-👉 [webdev-razor-http-methods](https://github.com/mustbebuilt/webdev-razor-http-methods)
-
----
-
-## Troubleshooting
-
-dotnet dev-certs https --trust
-
+Explore the related module repositories in the series:
+- [webdev-razor-lab1](https://github.com/mustbebuilt/webdev-razor-lab1) - Foundation: Razor Syntax, Layouts & Components
+- [webdev-razor-lab2-data](https://github.com/mustbebuilt/webdev-razor-lab2-data) - Data: EF Core, SQLite & LINQ
+- [webdev-razor-http-methods](https://github.com/mustbebuilt/webdev-razor-http-methods) - HTTP Methods: GET Query Strings, Route Params & PRG Pattern
