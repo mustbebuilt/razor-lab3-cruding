@@ -24,8 +24,8 @@ public class Staff
     [Column("job_title")]
     public string JobTitle { get; set; } = string.Empty;
 
-    [Column("hire_date")]
-    public string HireDate { get; set; } = string.Empty;
+    [Column("start_date")]
+    public string StartDate { get; set; } = string.Empty;
 
     [Column("salary")]
     public double Salary { get; set; }
